@@ -102,7 +102,7 @@ ibm-sfg-prod:
         memory: 4Gi
 
     autoscaling:
-      enabled: false
+      enabled: true
       minReplicas: 2
       maxReplicas: 4
       targetCPUUtilizationPercentage: 60
