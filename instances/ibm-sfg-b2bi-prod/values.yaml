@@ -36,7 +36,7 @@ ibm-sfg-prod:
     fsGroup: 1010
     runAsUser: 1010
   dataSetup:
-    enabled: false
+    enabled: true
     upgrade: false
   env:
     tz: "UTC"
@@ -60,11 +60,11 @@ ibm-sfg-prod:
     nistComplianceMode: "off"
     # Provide the DB attributes
     dbVendor: db2
-    dbHost: 172.21.232.157
+    dbHost: 172.21.235.137
     dbPort: 50000
     dbData: B2BIDB
     dbDrivers: db2jcc4.jar
-    dbCreateSchema: false
+    dbCreateSchema: true
     # Name of DB secret
     dbSecret: b2b-db-secret
     #Provide the admin email address
@@ -80,9 +80,9 @@ ibm-sfg-prod:
     jmsConnectionFactory: com.ibm.mq.jms.MQQueueConnectionFactory
     jmsConnectionFactoryInstantiator:
     jmsQueueName: DEV.QUEUE.1
-    jmsHost: 172.21.169.72
+    jmsHost: 172.21.16.19
     jmsPort: 1414
-    jmsConnectionNameList: 172.21.169.72(1414)
+    jmsConnectionNameList: 172.21.16.19(1414)
     jmsEnableSsl: false
     jmsChannel: DEV.APP.SVRCONN
     # Name of JMS secret if available
@@ -91,7 +91,7 @@ ibm-sfg-prod:
     #SANDBOX_WEBAPP_PROTOCOL: https
     #SANDBOX_WEBAPP_LIST_PORT: 5001
   asi:
-    replicaCount: 2
+    replicaCount: 1
 
     resources:
       limits:
@@ -102,10 +102,10 @@ ibm-sfg-prod:
         memory: 4Gi
 
     autoscaling:
-      enabled: true
+      enabled: false
       minReplicas: 2
       maxReplicas: 4
-      targetCPUUtilizationPercentage: 20
+      targetCPUUtilizationPercentage: 60
 
     frontendService:
       type: ClusterIP
@@ -157,7 +157,7 @@ ibm-sfg-prod:
           protocol: TCP
     ingress:
       internal:
-        host: asi-b2bi-prod.itzroks-6630023d5n-xnnyop-4b4a324f027aea19c5cbc0c3275c4656-0000.us-east.containers.appdomain.cloud
+        host: asi-b2bi-prod.itzroks-6630023d5n-rufpy6-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud
         tls:
           enabled: true
           secretName: ""
@@ -177,7 +177,7 @@ ibm-sfg-prod:
         memory: 4Gi
 
     autoscaling:
-      enabled: true
+      enabled: false
       minReplicas: 2
       maxReplicas: 4
       targetCPUUtilizationPercentage: 60
@@ -213,7 +213,7 @@ ibm-sfg-prod:
         #  protocol: TCP
     ingress:
       internal:
-        host: ac-b2bi-prod.itzroks-6630023d5n-xnnyop-4b4a324f027aea19c5cbc0c3275c4656-0000.us-east.containers.appdomain.cloud
+        host: ac-b2bi-prod.itzroks-6630023d5n-rufpy6-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud
         tls:
           enabled: true
           secretName: ""
@@ -247,7 +247,7 @@ ibm-sfg-prod:
         # protocol: TCP
     ingress:
       internal:
-        host: api-b2bi-prod.itzroks-6630023d5n-xnnyop-4b4a324f027aea19c5cbc0c3275c4656-0000.us-east.containers.appdomain.cloud
+        host: api-b2bi-prod.itzroks-6630023d5n-rufpy6-6ccd7f378ae819553d37d5f2ee142bd6-0000.us-south.containers.appdomain.cloud
         tls:
           enabled: true
           secretName: ""
